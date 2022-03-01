@@ -20,8 +20,6 @@ const Coinpage = () => {
     setCoin(data);
   };
 
-  console.log(coin);
-
   useEffect(() => {
     fetchCoin();
   // eslint-disable-next-line react-hooks/exhaustive-deps

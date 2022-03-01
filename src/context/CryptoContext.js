@@ -42,7 +42,6 @@ const CryptoContext = ({children}) => {
     onAuthStateChanged(auth, user => {
       if(user)setUser(user);
       else setUser(null);
-      console.log(user);
     });
   }, []);
   
@@ -50,7 +49,6 @@ const CryptoContext = ({children}) => {
   const fetchCoins = async() => {
     setLoading(true);
     const {data} = await axios.get(CoinList(currency));
-    console.log(data);
     setCoins(data); 
     setLoading(false);
   }
