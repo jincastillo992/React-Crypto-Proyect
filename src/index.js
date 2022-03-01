@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import CryptoContext from './context/CryptoContext';
 import "react-alice-carousel/lib/alice-carousel.css";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 
 ReactDOM.render(

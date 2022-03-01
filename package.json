@@ -5,22 +5,27 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/jest-dom": "5.11.4",
+    "@testing-library/react": "11.1.0",
+    "@testing-library/user-event": "12.1.10",
     "axios": "^0.21.1",
-    "chart.js": "^3.5.1",
+    "chart.js": "3.5.1",
+    "firebase": "^9.6.7",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.5.1",
+    "react-chartjs-2": "3.0.4",
     "react-dom": "^17.0.2",
+    "react-google-button": "^0.7.2",
     "react-html-parser": "^2.0.2",
+    "react-icons": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "dev-server": "webpack serve",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,5 +46,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.17",
+    "@babel/preset-env": "7.12.17",
+    "@babel/preset-react": "7.12.13",
+    "@svgr/webpack": "5.5.0",
+    "babel-loader": "8.2.2",
+    "copy-webpack-plugin": "7.0.0",
+    "core-js": "3.9.0",
+    "css-loader": "5.2.0",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.2.0",
+    "image-webpack-loader": "7.0.1",
+    "prettier": "1.19.1",
+    "regenerator-runtime": "0.13.7",
+    "style-loader": "2.0.0",
+    "webpack": "5.23.0",
+    "webpack-cli": "4.9.1",
+    "webpack-dev-server": "4.5.0"
   }
 }

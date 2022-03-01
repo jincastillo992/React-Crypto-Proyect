@@ -1,9 +1,14 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Homepage from "./pages/Homepage/Homepage";
-import Coinpage from "./pages/Coinpage/Coinpage";
-import { makeStyles } from "@material-ui/core";
+// import Coinpage from "./pages/Coinpage/Coinpage";
+import { LinearProgress, makeStyles } from "@material-ui/core";
+import NotFound from "./pages/404NotFound/NotFound";
+import Alert from "./components/Alert/Alert";
+import { lazy, Suspense } from "react";
+
+const Homepage = lazy(() => import("./pages/Homepage/Homepage"))
+const Coinpage = lazy(() => import ("./pages/Coinpage/Coinpage"))
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -20,9 +25,15 @@ function App() {
     <BrowserRouter>
       <div className={classes.App}>
         <Header />
-        <Route path="/" component={Homepage} exact />
-        <Route path="/coins/:id" component={Coinpage} exact />
+        <Suspense fallback={<LinearProgress style={{backgroundColor: "gold"}} />}>
+          <Switch>
+            <Route path="/" component={Homepage} exact />
+            <Route path="/coins/:id" component={Coinpage} exact />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Suspense>
       </div>
+      <Alert/>  
     </BrowserRouter>
   );
 }

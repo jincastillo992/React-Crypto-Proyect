@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import Banner from '../../components/Banner/Banner';
-import CoinsTable from '../../components/CoinsTable/CoinsTable';
+import { LinearProgress } from '@material-ui/core';
+const CoinsTable = lazy(()=> import('../../components/CoinsTable/CoinsTable'));
 
 const Homepage = () => {
   return (
     <>
-    <Banner />
-    <CoinsTable />
+    <Suspense fallback={<LinearProgress style={{backgroundColor: "gold"}} />}>
+      <Banner />
+      <CoinsTable />
+    </Suspense>
     </>
   )
 }

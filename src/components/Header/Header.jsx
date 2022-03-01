@@ -3,8 +3,10 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
 import { CryptoState } from '../../context/CryptoContext';
+import AuthModal from '../Authentication/AuthModal';
+import UserSidebar from '../Authentication/UserSidebar';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   title: {
     flex: 1,
     color: "gold",
@@ -13,13 +15,7 @@ const useStyles = makeStyles(() => ({
     cursor: "pointer",
   }
 }))
-
-const Header = () => {
-
-  const classes = useStyles();
-  const history = useHistory();
-  const { currency, setCurrency} = CryptoState();
-  const darkTheme = createTheme({
+const darkTheme = createTheme({
     palette:{
       primary:{
         main: "#ffff"
@@ -28,12 +24,17 @@ const Header = () => {
     }
   })
 
+function Header (){
+  const classes = useStyles();
+  const { currency, setCurrency, user} = CryptoState();
+  const history = useHistory();
+
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar color="transparent" position="static">
         <Container>
           <Toolbar>
-            <Typography onClick={() => history.push("/")} className={classes.title}>
+            <Typography onClick={() => history.push(`/`)} variant="h6" className={classes.title}>
               Crypto Hunter
             </Typography>
             <Select style={{
@@ -42,9 +43,12 @@ const Header = () => {
               marginLeft: 15,
             }} value={currency}
             onChange={(e) => setCurrency(e.target.value)}>
+              
               <MenuItem value={"USD"}>USD</MenuItem>
-              <MenuItem value={"CLP"}>CLP</MenuItem>    
+              <MenuItem value={"CLP"}>CLP</MenuItem>
+              <MenuItem value={"EUR"}>EUR</MenuItem>
             </Select>
+            {user ? <UserSidebar/> : <AuthModal/>}
           </Toolbar>
         </Container>
       </AppBar>  

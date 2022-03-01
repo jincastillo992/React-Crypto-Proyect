@@ -1,6 +1,7 @@
-import React from 'react'
-import { Container, makeStyles, Typography } from '@material-ui/core';
-import Carousel from '../Carousel/Carousel';
+import React, { lazy, Suspense } from 'react'
+import { CircularProgress, Container, makeStyles, Typography } from '@material-ui/core';
+
+const Carousel = lazy(()=> import('../Carousel/Carousel'));
 
 const useStyles = makeStyles((theme) => ({
   banner:{
@@ -44,7 +45,9 @@ const Banner = () => {
             fontFamily: "Open Sans",
           }}>Obtén toda la Información de tus Criptodivisas favoritas</Typography>
         </div>
-        <Carousel />
+        <Suspense fallback={<CircularProgress style={{ color: "gold" }} size={50} thickness={1}/>}>
+          <Carousel />
+        </Suspense>
       </Container>
     </div>
   )

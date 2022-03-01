@@ -35,9 +35,10 @@ const Carousel = () => {
     const {data} = await axios.get(TrendingCoins(currency));
     setTrending(data);
   };
-  console.log(trending);
+
   useEffect(() => {
     fetchTrendingCoins();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency])
 
   const items = trending.map((coin) => {
@@ -81,6 +82,7 @@ const Carousel = () => {
       autoPlayInterval={1000}
       animationDuration={1500}
       disableDotsControls
+      disableButtonsControls
       responsive={responsive}
       autoPlay
       items={items}/>
